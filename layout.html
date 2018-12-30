@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>{{ page_title }}</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="theme.scss" type="text/css">
+  <link rel="stylesheet" href="tablet-and-desktop.scss" type="text/css" media="screen and (min-width: 768px)">
+
+  <!-- because ie8 ignores media queries, we need this -->
+  <!--[if IE 8]>
+    <link rel="stylesheet" href="tablet-and-desktop.scss" type="text/css">
+  <![endif]-->
+
+
+  <!--[if IE]>
+  <link rel="stylesheet" href="ie.scss" type="text/css">
+  <![endif]-->
+
+  {{ content_for_header }}
+
+  <script type="text/javascript">
+    NB.appConfig.userIsLoggedIn = {{request.logged_in?}};
+  </script>
+
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic|Lato:400,400italic|Titillium+Web:600|Roboto+Slab:700|Oswald' rel='stylesheet' type='text/css'>
+
+  <script type="text/javascript" src="jquery.ui.effect.min.js"></script>
+  <script type="text/javascript" src="verve.js"></script>
+
+  {% if page.page_class_name == "page-type-donation" %}
+  <script type="text/javascript" src="jquery.ui.effect-slide.min.js"></script>
+  <script type="text/javascript" src="staged-donations.js"></script>
+  {% endif %}
+
+</head>
+<body class="aware-theme v2-theme {{ page.page_class_name }} js {% if site.has_background_image? %}has-background-image{% endif %}">
+  <div id="pattern" class="pattern">
+    <div class="wrap" id="wrap">
+      <div id="body" class="page-{{ request.template | replace: '_', '-' }}">
+
+        <div class="header-container clearfix {% if site.has_background_image? %}no-background{% endif %}">
+          <div class="width-container clearfix">
+
+            <div class="header-login-container">
+              {% if request.is_sidebar? %}
+              {% if page.has_rss? or request.logged_in? %}
+              <div class="sidebar-trigger desktop-visible tablet-visible"><i class="icon-cog2"></i></div>
+              {% elsif page and page.has_parent? and page.parent.has_rss? %}
+              <div class="sidebar-trigger desktop-visible tablet-visible"><i class="icon-cog2"></i></div>
+              {% endif %}
+              {% endif %}
+              {% if request.sorta_logged_in? %}
+              <div class="header-login desktop-visible">
+                <a href="{{ request.current_signup.settings_url }}"><i class="icon-user"></i>{{ request.current_signup.name_or_email }}</a>&emsp;&emsp;&middot;&emsp;&emsp;<a href="{{ request.current_signup.logout_url }}">Sign out</a>
+              </div>
+              {% else %}
+              <div class="header-login desktop-visible">
+                <span>Sign in:</span>&emsp;<a
+                      href="{{ request.twitter_connect_url }}">Twitter</a>&emsp;&emsp;&middot;&emsp;&emsp;<a href="{{ request.facebook_connect_url }}">Facebook</a>&emsp;&emsp;&middot;&emsp;&emsp;<a href="/login">email</a>
+              </div>
+              {% endif %}
+            </div>
+
+            {% include "nav" %}
+
+            {% if site.has_meta_image? %}
+              <div class="site-logo">
+                <header><a href="/"><img src="{{ site.meta_image_url }}"></a></header>
+              </div>
+            {% else %}
+              <header>
+                <h1 class="title"><a href="/">{{ site.long_name }}</a></h1>
+              </header>
+            {% endif %}
+
+          </div>
+          <!-- .width-container -->
+        </div>
+        <!-- .header-container -->
+        {% unless page.type_name == "Donation (v2)" %}
+        {% if site.has_header_image? and page.features_count == 0 %}
+        <div class="width-container">
+         <img src="{{ site.header_image_url_1026 }}" class="header-image" border="0" />
+        </div>
+        {% endif %}
+        {% endunless %}
+
+        {% if page.features_count > 0 %}
+          <div class="width-container">
+           {% include "features" %}
+          </div>
+        {% endif %}
+
+        <div class="main-container" id="middle">
+          <div class="main width-container {% if page.is_homepage? %}homepage{% endif %} clearfix">
+
+            {% if page.is_homepage? %}
+
+            <div class="participate">
+
+              {% if site.has_button1? or site.has_button2? or site.has_button3? %}
+
+              <div class="participate-button-wrap">
+
+                {% if site.has_button1? %}
+                <a class="button" href="{{ site.button1_page.full_url_with_profile_recruiter }}">{{ site.button1_text }}</a>
+                {% endif %}
+
+                {% if site.has_button2? %}
+                <a class="button" href="{{ site.button2_page.full_url_with_profile_recruiter }}">{{ site.button2_text }}</a>
+                {% endif %}
+
+                {% if site.has_button3? %}
+                <a class="button" href="{{ site.button3_page.full_url_with_profile_recruiter }}">{{ site.button3_text }}</a>
+                {% endif %}
+
+              </div>
+
+              {% endif %}
+
+              <div class="participate-form-wrap">
+
+                {% if site.has_signup_page? %}
+                {% if request.sorta_logged_in? %}
+                <div class="participate-form">
+                  <h5>Hi <a href="{{ request.current_signup.settings_url }}">{{ request.current_signup.name_or_email }}</a>. View your
+                  {% if site.show_public_profiles? %}
+                    <a href="{{ request.current_signup.profile_url }}">public profile</a>,
+                  {% endif %}
+                  <a href="{{ request.current_signup.settings_url }}">account settings</a>, or
+                  <a href="{{ request.current_signup.logout_url }}">sign out</a>.</h5>
+                </div>
+                {% else %}
+                <h5>Sign up to get the latest updates</h5>
+                <div class="participate-form">{% include "signup_form" with site.signup_page %}</div>
+                {% endif %}
+                {% endif %}
+
+              </div>
+
+            </div>
+
+            {% endif %}
+
+            {{ content_for_notifications }}
+
+            <div class="content-{{ request.template  | replace: '_', '-' }}">
+              {% yield %}
+            </div>
+
+          </div>
+          <!-- .main -->
+
+          {% if request.is_sidebar? %}
+          <div class="mobile-supporter-nav mobile-visible">
+
+            {% if request.logged_in? %}
+
+            {% include "supporter_nav" %}
+
+            {% else %}
+
+            {% if page and page.has_rss? %}
+              <ul class="supporter-nav">
+                <li>
+                  <a href="{{ page.rss_url }}"><i class="icon-rss"></i> Subscribe with RSS</a>
+                </li>
+              </ul>
+              {% elsif page and page.has_parent? and page.parent.has_rss? %}
+              <ul class="supporter-nav">
+                <li>
+                  <a href="{{ page.parent.rss_url }}"><i class="icon-rss"></i> Subscribe with RSS</a>
+                </li>
+              </ul>
+            {% endif %}
+
+            {% endif %}
+
+          </div>
+          {% endif %}
+
+        </div>
+        <!-- .main-container -->
+
+
+        <footer>
+
+          <div class="width-container clearfix">
+
+            <div class="row-fluid">
+
+              <div class="span4 footer-left footer-supporter-tiles-wrap">
+                {% unless site.recent_supporters_with_pictures == empty %}
+                <h4>Powered by people like you</h4>
+                <div class="footer-supporter-tiles clearfix">
+                  {% for signup in site.recent_supporters_with_pictures limit:10 %}
+                  {{ signup.bigger_profile_image }}
+                  {% endfor %}
+                </div>
+                {% endunless %}
+              </div>
+
+              <div class="span6 footer-left footer-content">
+                {% if site.footer_content.size > 0 %}
+                {{ site.footer_content }}
+                {% endif %}
+                {% if request.logged_in? %}
+                <p>Hi <a href="{{ request.current_signup.settings_url }}">{{ request.current_signup.name_or_email }}</a>. View your
+                {% if site.show_public_profiles? %}
+                  <a href="{{ request.current_signup.profile_url }}">public profile</a>,
+                {% endif %}
+                <a href="{{ request.current_signup.settings_url }}">account settings</a>, or
+                <a href="{{ request.current_signup.logout_url }}">sign out</a>.</p>
+                {% else %}
+                <p>Sign in with <a href="{{ request.facebook_connect_url }}">Facebook</a>, <a
+                    href="{{ request.twitter_connect_url }}">Twitter</a> or <a href="/login">email</a>.</p>
+                {% endif %}
+                <!-- The NationBuilder link below is required. If it is removed, we may add it back ourselves.
+                     You can style it or move it in different ways, but please leave it in the footer. -->
+                <p>Created with <a href="http://nationbuilder.com/">NationBuilder</a></p>
+                <p>
+                  {% if site.has_twitter? %}
+                  <span class="footer-social-button">
+                    <a href="{{ site.broadcaster.twitter_profile_url }}" class="twitter-follow-button" data-show-count="false">Follow @{{ site.broadcaster.twitter_login }} on Twitter</a>
+                  </span>
+                  {% endif %}
+                  {% if site.has_facebook_page? %}
+                  <span class="footer-social-button"><fb:like href="{{ site.broadcaster.facebook_page_profile_url }}" data-layout="button" layout="button" action="like" show_faces="false" share="false"></fb:like></span>
+                  {% else %}
+                  <span class="footer-social-button"><fb:like href="{{ site.full_url }}" layout="button" action="like" show_faces="false" share="false"></fb:like></span>
+                  {% endif %}
+                </p>
+              </div>
+
+              <div class="span2 footer-right footer-social-links">
+                {% if site.has_twitter? %}
+                <a class="twitter" target="_blank" href="{{ site.broadcaster.twitter_profile_url }}"><span class="icon-twitter-squared"></span></a>
+                {% endif %}
+                {% if site.has_facebook_page? %}
+                <a class="facebook" target="_blank" href="{{ site.broadcaster.facebook_page_profile_url }}"><span class="icon-facebook-squared"></span></a>
+                {% endif %}
+              </div>
+
+            </div>
+
+            {{ content_for_footer }}
+
+          </div>
+
+        </footer>
+
+        <!-- .width-container -->
+
+      </div>
+      <!-- #body -->
+    </div>
+    <!-- #wrap -->
+    {% if request.is_sidebar? %}
+    <div class="sidebar desktop-visible">
+
+      {% if request.logged_in? %}
+
+      {% include "supporter_nav" %}
+
+      {% else %}
+
+      <ul class="supporter-nav">
+
+        {% if page and page.has_rss? %}
+          <ul class="supporter-nav">
+            <li>
+              <a href="{{ page.rss_url }}"><i class="icon-rss"></i> Subscribe with RSS</a>
+            </li>
+          </ul>
+          {% elsif page and page.has_parent? and page.parent.has_rss? %}
+          <ul class="supporter-nav">
+            <li>
+              <a href="{{ page.parent.rss_url }}"><i class="icon-rss"></i> Subscribe with RSS</a>
+            </li>
+          </ul>
+        {% endif %}
+
+      </ul>
+
+      {% endif %}
+
+    </div>
+    {% endif %}
+    <!-- .sidebar -->
+  </div>
+  <!-- #pattern -->
+  {% if request.current_user.is_intern? %}
+    {% include "cp_nav" %}
+  {% endif %}
+
+{% if site.has_background_image? %}
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="/javascripts/jquery.backstretch.min.js"></script>
+  <script type="text/javascript">
+    jQuery.backstretch("{{ site.background_image_url }}", {speed: 0});
+  </script>
+  <![endif]-->
+  <style>
+    #body {
+      background: url('{{ site.background_image_url }}') no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+    @media only screen and (max-width: 768px) {
+      #body::before {
+        background: url('{{ site.background_image_url }}');
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100vw;
+        height: 100vh;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-position: center;
+        pointer-events: none;
+      }
+    }
+  </style>
+{% endif %}
+
+</body>
+</html>
