@@ -11,7 +11,7 @@ $style: red_white_and_blue;
 $headline-font: "Oswald", Helvetica, sans-serif;
 
 // main font
-$font: 18px / 26px Georgia, serif;
+$font: 18px / 26px "Lato", sans-serif !important;
 
 // nav font
 $nav-font: "Titillium Web", Helvetica, Arial, sans-serif;
@@ -59,7 +59,7 @@ $shade-2: #FFF;
 $shade-2-color: #333;
 $shade-3: #204464;
 $shade-3-color: #FFF;
-$footer-background: #204464;
+$footer-background: #333;
 $footer-color: #FFF;
 $footer-link-color: #FFF;
 $supporters-box-background: $theme-color-1;
@@ -328,7 +328,7 @@ img {
 body {
   background-color: $footer-background;
   margin: 0;
-  font: 16px/24px $font;
+  font: 16px/24px "Lato", sans-serif;
   color: $text-color;
 }
 
