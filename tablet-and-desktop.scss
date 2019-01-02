@@ -1,1453 +1,821 @@
-/* ===================================================================================
-   This is the tablet and desktop stylesheet. It applies to viewports above 768px.
-   For the mobile first stylesheet which applies to all screen widths, see theme.scss.
-   =================================================================================== */
+  /* ===================================================================================
+     This is the tablet and desktop stylesheet. It applies to viewports above 768px.
+     For the mobile first stylesheet which applies to all screen widths, see theme.scss.
+     =================================================================================== */
 
-//* style variables *//
+  //* style variables *//
 
-$style: red_white_and_blue;
+  $style: red_white_and_blue;
 
-// rich effects
-$effects: true;
+  // rich effects
+  $effects: true;
 
-// headline font
-$headline-font: "Oswald", Helvetica, sans-serif;
+  // headline font
+  $headline-font: "Oswald", Helvetica, sans-serif;
 
-// main font
-$font: 18px / 26px Georgia, serif;
+  // main font
+  $font: 18px / 26px Georgia, serif;
 
-// nav font
-$nav-font: "Titillium Web", Helvetica, Arial, sans-serif;
+  // nav font
+  $nav-font: "Titillium Web", Helvetica, Arial, sans-serif;
 
-// link / accent color
-$theme-color-1: #183583;
-// background color
-$theme-color-2: #fff;
-// button background / primary color
-$theme-color-3: #B3D0EE;
-// mobile nav background / secondary color
-$theme-color-4: #2279C6;
+  // link / accent color
+  $theme-color-1: #2279C6;
+  // background color
+  $theme-color-2: #fff;
+  // button background / primary color
+  $theme-color-3: #183583;
+  // mobile nav background / secondary color
+  $theme-color-4: #2279C6;
 
-// text colors
-$text-color: #333;
-$form-color: #505050;
-$form-background: $theme-color-2;
-$form-border: #EEE;
-$headline-color: $text-color;
-$headline-rule-color: #D2D2D2;
+  // text colors
+  $text-color: #333;
+  $form-color: #505050;
+  $form-background: $theme-color-2;
+  $form-border: #EEE;
+  $headline-color: $text-color;
+  $headline-rule-color: #D2D2D2;
 
-// form input area focus color
-$theme-color-5: rgba($theme-color-3, 0.6);
+  // form input area focus color
+  $theme-color-5: rgba($theme-color-3, 0.6);
 
-// navigation
-$nav-color: $theme-color-3;
-$nav-color-active: $theme-color-1;
-$subnav-color: $theme-color-2;
-$subnav-color-hover: #353535;
-$subnav-color-active: $theme-color-1;
-$subnav-background: $theme-color-3;
-$sidebar-background: $theme-color-1;
-$sidebar-color: $theme-color-2;
-$header-login-background: #FFF;
-$header-login-color: $subnav-color-hover;
+  // navigation
+  $nav-color: $theme-color-3;
+  $nav-color-active: #2279C6;
+  $subnav-color: $theme-color-2;
+  $subnav-color-hover: #2279C6;
+  $subnav-color-active: $theme-color-1;
+  $subnav-background: $theme-color-3;
+  $sidebar-background: $theme-color-1;
+  $sidebar-color: $theme-color-2;
+  $header-login-background: #FFF;
+  $header-login-color: $subnav-color-hover;
 
-// buttons
-$button-color: #FFF;
-$button-radius: 0px;
+  // buttons
+  $button-color: #FFF;
+  $button-radius: 0px;
 
-// containers
-$shade-1: #EEE;
-$shade-1-color: $text-color;
-$shade-2: #FFF;
-$shade-2-color: #333;
-$shade-3: #204464;
-$shade-3-color: #FFF;
-$footer-background: #204464;
-$footer-color: #FFF;
-$footer-link-color: #FFF;
-$supporters-box-background: $theme-color-1;
-$supporters-box-color: #FFF;
-$widget-background: $theme-color-1;
-$widget-color: #FFF;
-$widget-2-background: $sidebar-background;
-$widget-2-color: $sidebar-color;
-$progress-background: $shade-2;
+  // containers
+  $shade-1: #EEE;
+  $shade-1-color: $text-color;
+  $shade-2: #FFF;
+  $shade-2-color: #333;
+  $shade-3: #204464;
+  $shade-3-color: #FFF;
+  $footer-background: #204464;
+  $footer-color: #FFF;
+  $footer-link-color: #FFF;
+  $supporters-box-background: $theme-color-1;
+  $supporters-box-color: #FFF;
+  $widget-background: $theme-color-1;
+  $widget-color: #FFF;
+  $widget-2-background: $sidebar-background;
+  $widget-2-color: $sidebar-color;
+  $progress-background: $shade-2;
 
-// general success and error colors
-$red: #CE3337;
-$yellow: #FFAA4F;
-$green: #A8BD6E;
-$blue: #488DBE;
+  // general success and error colors
+  $red: #CE3337;
+  $yellow: #FFAA4F;
+  $green: #A8BD6E;
+  $blue: #488DBE;
 
-// border-radius mixin
-@import "border_radius";
+  // border-radius mixin
+  @import "border_radius";
 
-// fluid grid for tablet
-@import "grid-tablet";
+  // fluid grid for tablet
+  @import "grid-tablet";
 
-//compass css3 mixins
-@import "compass/css3";
+  //compass css3 mixins
+  @import "compass/css3";
 
-//mobile nav
-@import "mobile-nav";
+  //mobile nav
+  @import "mobile-nav";
 
-.alt-text-colors, .inverted {
-  label, .radio-inline label.radio, .checkbox-inline label.checkbox {
-    color: $shade-3-color;
-  }
-}
-
-// wraps your site name or site logo
-
-.header-container {
-  background: transparent;
-  .width-container {
-    position: relative;
-  }
-}
-
-header {
-  box-shadow: none;
-  max-width: 300px;
-  position: absolute;
-  padding: 0;
-  background: transparent;
-  z-index: 15;
-  top:65px;
-  &.aligntop {
-    top: 34px;
-    bottom: auto;
-  }
-}
-
-.title {
-  a {
-    color: $text-color;
-  }
-}
-
-.splash header {
-  box-shadow: none;
-  position: relative;
-  top: -26px;
-  text-align: left;
-}
-
-.splash .header-container {
-  padding-bottom: 55px;
-}
-
-.header-image, .page-features, .homepage-excerpt, .page-excerpt, .participate, .byline, .page-pages-show-voter-registration .iframe-wrapper {
-  width: 100%;
-  margin-left: 0;
-}
-
-.header-login-container {
-  padding-top: 17px;
-  margin-bottom: 52px;
-  &:before, &:after {
-    box-shadow: none;
-    height: 17px;
-  }
-  .sidebar-trigger {
-    height: 57px;
-    width: 57px;
-    cursor: pointer;
-    background: $widget-background;
-    color: $widget-color;
-    text-align: center;
-    line-height: 60px;
-    font-size: 30px;
-    float: right;
-    margin-top: -17px;
-    position: relative;
-    z-index: 5;
-    i {
-      &:before{
-        margin: 0;
-      }
+  .alt-text-colors, .inverted {
+    label, .radio-inline label.radio, .checkbox-inline label.checkbox {
+      color: $shade-3-color;
     }
   }
-}
 
-.header-login {
-  color: $theme-color-1;
-  font-size: 11px;
-  font-weight: 700;
-  font-family: $nav-font;
-  text-transform: uppercase;
-  background: $header-login-background;
-  float: right;
-  padding: 8px 20px;
-  span, a {
-    color: $header-login-color;
-  }
-  i {
-    font-size: 16px;
-    line-height: 11px;
-    vertical-align: middle;
-    margin-left: -5px;
-    margin-right: 5px;
-  }
-}
+  // wraps your site name or site logo
 
-.site-logo {
-  margin: 0;
-  width: 300px;
-  z-index: 15;
-  position: absolute;
-  top: -39px;
-  height: 150px;
-  left: 0;
-  header, header.splash {
-    float: left;
-    margin-left: 0;
-    position: absolute;
-    bottom: 0;
-    top:initial;
-  }
-}
-
-.width-container {
-  padding: 0;
-  width: 90%;
-  margin: 0 5%;
-  &.main {
-    padding: 50px;
-    &.homepage {
-      padding: 0;
-    }
-  }
-}
-
-.like-page {
-  padding: 0;
-  border: none;
-}
-
-.homepage_excerpt-list + .like-page {
-  &:after {
-    display: none;
-  }
-}
-
-// site wide footer
-
-footer {
-  margin-top: 110px;
-  & > .width-container {
-    position: relative;
-    z-index: 5;
-  }
-  .footer-right {
-    margin-top: 0;
-    text-align: right;
-  }
-  .row-fluid [class*="span"] {
-    min-height: 0;
-  }
-  .row-fluid [class*="span"].footer-supporter-tiles-wrap {
-    // second shadow is a hack to fix a Chrome bug where the container background would disappear on certain viewport widths
-    box-shadow: 0 240px 0 0 $supporters-box-background,0 -1px 0 0 $supporters-box-background;
-    border-top-left-radius: $button-radius;
-    border-top-right-radius: $button-radius;
-    padding: 35px 38px 38px 38px;
-    min-height: 250px;
-    z-index: 5;
-    position: relative;
-  }
-}
-
-.footer-content, .footer-social-links {
-  padding: 35px 0;
-}
-
-// hides off canvas nav
-
-.wrap {
-  &.active {
-    left: 0;
-  }
-  &.sidebar-active {
-    @include filter(blur(1.5px));
-  }
-}
-
-.sharetable {
-  display: block;
-  width: 487px;
-  .facebook-cell {
-    float: left;
-    text-align: left;
-    padding: 0 20px 0 0;
-    margin-bottom: 0;
-    vertical-align: top;
-    width: 320px;
-  }
-  .twitter-cell {
-    float: left;
-    text-align: left;
-    padding: 0 20px 0 0;
-    vertical-align: top;
-    width: 75px;
-  }
-  .gplus-cell {
-    float: left;
-    text-align: left;
-    vertical-align: top;
-    width: 52px;
-  }
-}
-
-.mobile-visible {
-  display: none;
-}
-
-.desktop-visible {
-  display: block;
-}
-
-.flash-share {
-  .float {
-    float: right;
-  }
-}
-
-.email-signup {
-  input.text {
-    width: 73%;
-  }
-  .submit-button {
-    width: 27%;
-  }
-}
-
-// icon which activates off canvas nav
-
-.menu-link {
-  display: none;
-}
-
-// top nav with drop downs
-
-nav, .subnav {
-  background-color: transparent;
-  border-right: 0;
-  border-top: 0;
-  height: auto;
-  left: 0;
-  position: relative;
-  width: 100%;
-  .topnav {
-    margin: 0 -20px 0 300px;
-    clear: both;
-    list-style: none;
-    text-align: right;
-    min-height: 35px;
-  }
-  li {
-    display: inline-block;
-    line-height: 20px;
+  .header-container {
     background: transparent;
-    border: none;
-    a {
-      display: block;
-      width: 100%;
-      height: 100%;
-      background:transparent;
-      border: none;
-      color: $nav-color;
-      padding: 0;
+    .width-container {
       position: relative;
-      &:hover {
-        background: transparent;
-      }
-    }
-    & > a {
-      transition: all .15s ease;
-      padding: 8px 20px;
-      color: $nav-color;
-    }
-    &.active{
-      border-color: transparent;
-      & > a {
-        color: $nav-color-active;
-      }
-    }
-    &:hover{
-      & > a {
-        color: rgba($nav-color,.75);
-      }
-    }
-    &.blurred {
-      & > a {
-        opacity: .33;
-      }
-    }
-    &:last-child {
-      padding-bottom: 15px;
-    }
-    &.drop {
-      transition: padding .3s ease;
-      &:hover {
-        padding-bottom: 72px;
-        a:after {
-          opacity: 1;
-        }
-        .sub {
-          opacity: 1;
-          visibility: visible;
-        }
-      }
-      &.no-animate {
-        -webkit-transition: none !important;
-        -moz-transition: none !important;
-        -o-transition: none !important;
-        transition: none !important;
-      }
-      & > a:after {
-        opacity: 0;
-        transition: opacity .3s ease;
-        font-family: "Lato", Helvetica, Arial, sans-serif;
-        content: "\25B2";
-        display: block;
-        color: $subnav-background;
-        transform: scale(2,1);
-        font-size: 20px;
-        position: absolute;
-        top: 32px;
-        left: 40%;
-        width: auto;
-      }
-      i {
-        transition: none;
-        font-size: 14px;
-        vertical-align: -3%;
-      }
     }
   }
-  .sub {
-    transition: all .3s ease;
-    opacity: 0;
+
+  header {
+    box-shadow: none;
+    max-width: 300px;
     position: absolute;
-    display: block;
-    left: 0;
-    visibility: hidden;
-    li {
-      a {
-        background: transparent;
-        &:hover {
-          background: transparent;
-        }
-      }
-    }
-  }
-}
-
-nav {
-  /* controls bg color of top when hovering on sub */
-  .sub {
-    top: 50px;
-    background-color: $subnav-background;
-    color: $subnav-color;
-    padding: 15px;
-    width: 100%;
-    text-align: center;
-    li {
-      width: auto;
-      border: none;
-      color: $theme-color-2;
-      font-size: 13px;
-      line-height: 18px;
-      border-color: transparent;
-      background: transparent;
-      margin-left: 15px;
-      padding: 0;
-      &.mobile-visible {
-        display: none;
-      }
-      &:hover {
-        a {
-          color: $subnav-color-hover;
-        }
-      }
-      &:active {
-        a {
-          color: $subnav-color-active;
-        }
-      }
-      a {
-        color: $subnav-color;
-      }
-    }
-    a {
-      background: none;
-      padding: 5px 20px;
-      color: $subnav-color;
-      &:hover {
-        text-decoration: none;
-        color: $subnav-color-hover;
-      }
-    }
-  }
-}
-
-// navigation shown if a page has more than one subpage
-
-.subnav {
-  margin: 0 -20px 20px -20px;
-  padding: 0;
-  float: left;
-  clear: both;
-  font-family: $nav-font;
-  font-size: 13.5px;
-  font-weight: 700;
-  text-transform: uppercase;
-  & > li {
-    & > a {
-      color: mix($subnav-background, $shade-2, 70%);
-    }
-    &:hover {
-      & > a {
-        opacity: .8;
-        color: $subnav-background;
-      }
-    }
-    &.active {
-      & > a {
-        color: $theme-color-1;
-      }
-    }
-  }
-  li {
-    position: relative;
-    &.drop {
-      &:hover {
-        padding-bottom: 8px;
-      }
-      a:after {
-        display: none;
-      }
-    }
-  }
-  .sub {
-    text-align: left;
-    left: 3px;
-    margin-top: 5px;
-    width: 200px;
-    padding: 7px 17px 14px 17px;
-    background: $sidebar-background;
-    li {
-      display: block;
-      margin: 0;
-      padding: 0;
-      &:last-child {
-        border: none;
-      }
-      &:hover {
-        a {
-          color: lighten($sidebar-color,8);
-        }
-      }
-      a {
-        color: $sidebar-color;
-        padding: 10px 0 0 0;
-        &:hover {
-          opacity: .8;
-        }
-      }
-    }
-  }
-}
-
-.homepage {
-  .subnav {
-    & > li {
-      & > a {
-        color: $nav-color;
-      }
-      &.active {
-        & > a {
-          color: $nav-color-active;
-        }
-      }
-    }
-  }
-}
-
-.postcard {
-  margin: 0 -50px;
-  padding-left: calc(50% + 50px);
-  #events_map {
-    height: 100% !important;
-    width: 100%;
-    position: absolute;
-  }
-}
-
-.postcard-image {
-  position: absolute;
-  left: 0;
-  top: 0;
-  margin: 0;
-  width: 50%;
-  height: 100%;
-}
-
-@media (min-width : 1025px) {
-.postcard-image:after {
-  content: "\25C0";
-  position: absolute;
-  font-size: 24px;
-  text-align: right;
-  width: 18px;
-  height: 24px;
-  top: calc(50% - 12px);
-  right: 0;
-  color: $shade-3;
-  transform: scale(1,1.25);
-  }
-}
-
-.page-excerpt {
-  margin-left: -50px;
-  margin-right: -50px;
-}
-
-.progress-container {
-  margin: 50px -50px;
-  padding-left: 50px;
-  padding-right: 50px;
-}
-
-.homepage-excerpt, .page-excerpt {
-  padding: 50px 50px 50px 125px;
-  margin-bottom: 40px;
-  .excerpt-child {
-    background: $shade-2;
-    padding: 50px 50px 50px 0;
-    &:first-of-type {
-      margin-top: -50px;
-      .excerpt-postcard-image {
-        margin-top: 0;
-      }
-    }
-    &:last-child {
-      margin-bottom: -50px;
-      padding-bottom: 50px;
-    }
-    &.postcard {
-      position: relative;
-      margin-right: -50px;
-      margin-left: -125px;
-      padding-left: calc(50% + 140px);
-    }
-    &:not(.postcard) + .excerpt-child:not(.postcard) {
-      padding-top: 0;
-    }
-    &.even.postcard {
-      padding: 50px calc(50% + 140px) 50px 50px;
-      .excerpt-postcard-image {
-        left: auto;
-        right: 0;
-        &:after {
-          transform: rotate(180deg) scale(1,1.25);
-          left: 0;
-          right: auto;
-        }
-      }
-    }
-    div.share-container:last-child {
-      margin-bottom: -50px;
-    }
-  }
-  .has-goal {
-    width: 56%;
-  }
-  .progress-container {
-    margin: 0;
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-  .excerpt-postcard-image {
-    margin: 0;
-  }
-}
-
-.homepage-excerpt {
-  &.basic {
-    border-left: 18px solid $widget-background;
-    padding-top: 50px;
-    padding-left: 50px;
-  }
-}
-
-.page-excerpt {
-  width: calc(100% + 100px);
-  padding: 30px 50px;
-  margin-bottom: 40px;
-  .excerpt-child {
-    padding: 30px 0;
-    &:first-of-type {
-      margin-top: -30px;
-    }
-    &:last-child {
-      margin-bottom: -30px;
-      padding-bottom: 30px;
-    }
-    &.postcard {
-      margin-left: -50px;
-      padding-right: 50px;
-      padding-left: calc(50% + 80px);
-    }
-  }
-}
-
-.excerpt-postcard-image {
-  @extend .postcard-image;
-  &:after {
-    color: $shade-2;
-  }
-}
-
-// follow page link shown in page stream
-
-.page-follow {
-  float: right;
-  margin-top: -25px;
-}
-
-#stream {
-  margin-top: 45px;
-}
-
-.radio input[type="radio"], .checkbox input[type="checkbox"] {
-  margin-left: -22px;
-}
-.checkbox, .radio {
-  margin-left: 22px;
-}
-
-// inline radio buttons and check boxes
-
-.radio-inline, .checkbox-inline {
-  span {
-    white-space: nowrap;
-    display: inline-block;
-    &:last-child {
-      label.radio, label.checkbox {
-        margin-right: 0;
-      }
-    }
-  }
-  input[type="radio"], input[type="checkbox"] {
-    margin: 0;
-    display: inline-block;
-  }
-  input[type="radio"]:checked+label, input[type="checkbox"]:checked+label {
-    background-color: transparent;
-    color: $theme-color-1;
-  }
-  label {
-    display: block;
-  }
-  label.radio, label.checkbox {
-    .option_label {
-      display: inline;
-    }
-    position: relative;
-    top: 2px;
-    display: inline-block;
-    width: auto;
-    background-color: transparent;
-    font-family: $font;
-    color: $form-color;
-    font-size: 15px;
-    font-weight: normal;
-    text-transform: none;
-    text-align: left;
     padding: 0;
-    margin: 0 10px 10px 3px;
-    min-width: 0;
-  }
-  label.checkbox {
-    position: relative;
-    padding: 0;
-    height: auto;
-    font-size: inherit;
-    margin: 0;
-  }
- &.checkbox-inline {
-    vertical-align: top;
-    li {
-      width: auto;
-      label {
-        width: auto;
-      }
-      input[type="checkbox"] {
-        vertical-align: middle;
-      }
-    }
-  }
-}
-
-// inline radio buttons
-
-.radio.inline, .checkbox.inline, .inline label.radio {
-  display: inline-block;
-  margin-right: 20px;
-  padding-top: 5px;
-  margin-bottom: 10px;
-  vertical-align: middle;
-  &:first-child {
-    margin-left: 0;
-  }
-}
-
-input[type="checkbox"],
-input[type="radio"] {
-  border: 0;
-  padding: 0;
-  background: none;
-  box-shadow: 0;
-}
-
-// wraps credit card icons
-
-.cc {
-  padding-bottom: 10px;
-}
-
-// paid membership options
-
-ul.membership-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  vertical-align: top;
-  li.membership {
-    vertical-align: top;
-    display: inline-block;
-    margin: 0 1.22% 1.22% 0;
-    width: 31.8%;
-    height: 250px;
-    .buy {
-      position: absolute;
-      width: 88px;
-      bottom: 15px;
-      margin-left: -44px;
-      left: 50%;
-    }
-  }
-}
-
-// featured content slider
-
-.page-features {
-  .features-headline {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 33px;
-    padding: 24px;
-    background: $widget-2-background;
-    color: $widget-2-color;
-    p {
-      margin: 0 0 1em 0;
-      width: 225px;
-    }
-    h4 {
-      color: $widget-2-color;
-      margin-bottom: .5em;
-      width: 225px;
-    }
-  }
-  .features-control-nav {
-    padding: 0;
-    text-align: center;
-    li {
-      font-size: 32px;
-      line-height: 1;
-      display: inline-block;
-      cursor: pointer;
-      margin: 0 5px;
-      &.active {
-        opacity: .5;
-      }
-    }
-  }
-}
-
-// participate box
-.participate {
-  display: table;
-  @if ($button-radius == 0px) {
-    padding: 0;
-  } @else {
-    padding: 15px;
-  }
-  .participate-button-wrap, .participate-form-wrap {
-    display: table-cell;
-    vertical-align: middle;
-  }
-  .participate-button-wrap {
-    width: 33%;
-    & + .participate-form-wrap {
-      margin-top: 0;
-    }
-  }
-  .participate-form-wrap {
-    width: 67%;
-    padding: 40px 8.5% 50px 8.5%;
-  }
-}
-
-.byline {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 174px;
-  margin: 0;
-  & ~ * {
-    padding-right: 154px;
-    .page-follow {
-      visibility: hidden;
-    }
-  }
-  li {
-    i + span {
-      display: inline-block;
-      vertical-align: middle;
-      word-wrap: break-word;
-      max-width: 100px;
-    }
-  }
-}
-
-// inline sign in form
-
-.user-session-form-container {
-  .oauth-links {
-   margin-bottom: 0;
-  }
-  .email-sign-in {
-    margin-top: 0;
-    width: auto;
-    text-align: left;
-  }
-  .or-create-account, .email-sign-in {
-    text-align: left;
-    padding-left: 7px;
-    width: auto;
-    margin-top: 5px;
-  }
-  .post-comment, .submit-button.post-comment {
-    width: auto;
-  }
-}
-
-.signin-with-facebook, .signin-with-twitter {
-  display: inline-block;
-  margin-bottom: 30px;
-  width: 200px;
-}
-
-.review-rules {
-  float: right;
-  padding: 0;
-}
-
-// page specific tweaks
-
-.supporter-pic-right {
-  padding-left: 10px;
-}
-
-.calendar-search-form {
-  .postcard-content {
-    h3 {
-      font-size: 24px;
-    }
-    .email-signup input {
-      font-size: 25px;
-      &.text {
-        padding: 13px 18px;
-      }
-      &.submit-button {
-        padding: 17px 0;
-      }
-    }
-    .radio-inline {
-      span:nth-child(2n) {
-        label.radio {
-          margin-right:10px;
-        }
-      }
-      label.radio {
-        width: auto;
-        margin-right: 10px;
-        float: none;
-        display: inline-block;
-      }
-    }
-    .host-own a {
-      display: inline-block;
-      margin-top: 0;
-    }
-  }
-}
-
-#event_rsvp_guests_count, input.quantity, #signup_donations_to_raise_amount {
-  width: 25%;
-}
-
-.event-wrap {
-  li.span6 {
-      &:nth-child(2n+1) {
-      margin-left: 0;
-      clear: both;
-    }
-  }
-}
-
-.faq {
-  .page-excerpt {
-    padding-left: 50px;
-    padding-right: 0;
-  }
-}
-
-.page-type-question, .page-type-faq {
-  .question {
-    padding-left: 40px;
-    height: 72px;
-    &:before {
-      font-size: 48px;
-      width: 72px;
-      line-height: 72px;
-    }
-    & ~ #content {
-      .intro {
-        padding-left: 40px;
-      }
-      .answer-wrap {
-        padding-left: 40px;
-      }
-    }
-    & + .excerpt {
-      padding-left: 40px;
-    }
-  }
-  .answer-wrap {
-    &:before {
-      content: "A";
-      font-size: 48px;
-      width: 72px;
-      line-height: 72px;
-    }
-  }
-}
-
-.vote-pledge-form {
-  .row-fluid .span4 {
-    margin-top: 0;
-  }
-}
-
-.suggestion-tag-list {
-  li {
-    margin: 1em 1em 10px 0;
-  }
-}
-
-.people-list {
-  width: 100%;
-  margin: 0 0 10px 0;
-  .people-name {
-    max-width: none;
-  }
-}
-
-.page-pages-show-donation-wide {
-  .radio-inline {
-    span {
-      float: left;
-      margin: 2.5% 5% 2.5% 0;
-      min-width: 30%;
-      &:nth-child(2n) {
-        margin-right: 5%;
-      }
-      &:nth-child(3n) {
-        margin-right: 0;
-      }
-    }
-  }
-  #donation_amount_other {
-    margin: 22px 0 0 0;
-  }
-  .stage-1 { position:relative;
-    .progress-stage-button {
-      margin-top: -52px;
-    }
-  }
-  .progress-indicator-stages {
-    li {
-      .stage-label {
-        min-width: 100px;
-      }
-    }
-  }
-  .donation_form .form-wrap {
-    margin-right: 20px;
-  }
-  .staged-donation-content {
-    position: relative;
-    .progress-container {
-      margin: -50px -50px 50px 0;
-      padding-left: 30px;
-      padding-right: 30px;
-    }
-  }
-  input#donation_amount_other {
-    width: 30%;
-    position:absolute;
-    bottom:0;
-    left:100px;
-  }
-  label[for="donation_amount_other"] {
-    clear:both;
-  }
-}
-
-.distance {
-  .within {
-    position: relative;
-    top: 2px;
-    display: inline;
-    padding-right: 5px;
-  }
-}
-
-.page-user-sessions-new-wide {
-  h2 {
-    font-size: 31.5px;
-    line-height: 35px;
-  }
-}
-
-// styling for when background image is enabled
-
-.has-background-image {
-  .main.width-container {
-    &.homepage {
-      background: transparent;
-      .homepage-excerpt, .page-excerpt {
-        background: rgba($shade-2,.8);
-      }
-    }
-    .excerpt-child {
-      background: transparent;
-    }
-  }
-  .participate {
-    background: rgba($shade-1,.8);
-  }
-}
-
-// inline formatting for name, activity type and date in page stream for tablet and desktop view
-
-ul#page-stream {
-  li.activity  {
-    span + a {
-    display: inline;
-    }
-  }
-  .activity-time {
-    display: inline;
-  }
-  .timeago {
-    display: inline;
-    padding-right: 0;
-    float: none;
-    color: inherit;
-  }
-  .activity_links a {
-    display: inline;
-  }
-  .activity_content {
-    clear: none;
-  }
-}
-
-.activities {
-  li {
-    .activity {
-      margin-left: 64px;
-      padding: 20px 25px;
-    }
-  }
-}
-
-#unsubscribe_email, #feedback_content {
-  max-width: 600px;
-}
-
-// Tablet only
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-
-  .radio input[type="radio"], .checkbox input[type="checkbox"] {
-    margin-left: -29px;
-  }
-
-  .checkbox, .radio {
-    margin-left: 29px;
-  }
-
-  .site-logo {
-    margin: 15px 85px;
-    width: auto;
-    position: relative;
-    top: 0;
-    height:auto;
-    header, header.splash {
-      float: none;
-      position: relative;
-      a {
-        position: relative;
-      }
+    background: transparent;
+    z-index: 15;
+    top:65px;
+    &.aligntop {
+      top: 34px;
+      bottom: auto;
     }
   }
 
   .title {
     a {
-      @if (lightness($shade-2) * .79 < lightness($text-color) and lightness($text-color) < lightness($shade-2) * 1.19 ) {
-        color: $theme-color-2;
-      } @else {
-        color: $text-color;
+      color: $text-color;
+    }
+  }
+
+  .splash header {
+    box-shadow: none;
+    position: relative;
+    top: -26px;
+    text-align: left;
+  }
+
+  .splash .header-container {
+    padding-bottom: 55px;
+  }
+
+  .header-image, .page-features, .homepage-excerpt, .page-excerpt, .participate, .byline, .page-pages-show-voter-registration .iframe-wrapper {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .header-login-container {
+    padding-top: 17px;
+    margin-bottom: 52px;
+    &:before, &:after {
+      box-shadow: none;
+      height: 17px;
+    }
+    .sidebar-trigger {
+      height: 57px;
+      width: 57px;
+      cursor: pointer;
+      background: $widget-background;
+      color: $widget-color;
+      text-align: center;
+      line-height: 60px;
+      font-size: 30px;
+      float: right;
+      margin-top: -17px;
+      position: relative;
+      z-index: 5;
+      i {
+        &:before{
+          margin: 0;
+        }
       }
     }
   }
 
-// off canvas nav to be used on tablets, since drop downs don't work on touch devices
+  .header-login {
+    color: $theme-color-1;
+    font-size: 11px;
+    font-weight: 700;
+    font-family: $nav-font;
+    text-transform: uppercase;
+    background: $header-login-background;
+    float: right;
+    padding: 8px 20px;
+    span, a {
+      color: $header-login-color;
+    }
+    i {
+      font-size: 16px;
+      line-height: 11px;
+      vertical-align: middle;
+      margin-left: -5px;
+      margin-right: 5px;
+    }
+  }
 
-  nav {
-    @include mobile-nav;
-    float: none;
+  .site-logo {
     margin: 0;
-    .topnav {
-      margin: 0;
-      padding: 0;
+    width: 300px;
+    z-index: 15;
+    position: absolute;
+    top: -39px;
+    height: 150px;
+    left: 0;
+    header, header.splash {
+      float: left;
+      margin-left: 0;
+      position: absolute;
+      bottom: 0;
+      top:initial;
+    }
+  }
+
+  .width-container {
+    padding: 0;
+    width: 90%;
+    margin: 0 5%;
+    &.main {
+      padding: 50px;
+      &.homepage {
+        padding: 0;
+      }
+    }
+  }
+
+  .like-page {
+    padding: 0;
+    border: none;
+  }
+
+  .homepage_excerpt-list + .like-page {
+    &:after {
+      display: none;
+    }
+  }
+
+  // site wide footer
+
+  footer {
+    margin-top: 110px;
+    & > .width-container {
+      position: relative;
+      z-index: 5;
+    }
+    .footer-right {
+      margin-top: 0;
+      text-align: right;
+    }
+    .row-fluid [class*="span"] {
+      min-height: 0;
+    }
+    .row-fluid [class*="span"].footer-supporter-tiles-wrap {
+      // second shadow is a hack to fix a Chrome bug where the container background would disappear on certain viewport widths
+      box-shadow: 0 240px 0 0 $supporters-box-background,0 -1px 0 0 $supporters-box-background;
+      border-top-left-radius: $button-radius;
+      border-top-right-radius: $button-radius;
+      padding: 35px 38px 38px 38px;
+      min-height: 250px;
+      z-index: 5;
+      position: relative;
+    }
+  }
+
+  .footer-content, .footer-social-links {
+    padding: 35px 0;
+  }
+
+  // hides off canvas nav
+
+  .wrap {
+    &.active {
+      left: 0;
+    }
+    &.sidebar-active {
+      @include filter(blur(1.5px));
+    }
+  }
+
+  .sharetable {
+    display: block;
+    width: 487px;
+    .facebook-cell {
+      float: left;
       text-align: left;
+      padding: 0 20px 0 0;
+      margin-bottom: 0;
+      vertical-align: top;
+      width: 320px;
+    }
+    .twitter-cell {
+      float: left;
+      text-align: left;
+      padding: 0 20px 0 0;
+      vertical-align: top;
+      width: 75px;
+    }
+    .gplus-cell {
+      float: left;
+      text-align: left;
+      vertical-align: top;
+      width: 52px;
+    }
+  }
+
+  .mobile-visible {
+    display: none;
+  }
+
+  .desktop-visible {
+    display: block;
+  }
+
+  .flash-share {
+    .float {
+      float: right;
+    }
+  }
+
+  .email-signup {
+    input.text {
+      width: 73%;
+    }
+    .submit-button {
+      width: 27%;
+    }
+  }
+
+  // icon which activates off canvas nav
+
+  .menu-link {
+    display: none;
+  }
+
+  // top nav with drop downs
+
+  nav, .subnav {
+    background-color: transparent;
+    border-right: 0;
+    border-top: 0;
+    height: auto;
+    left: 0;
+    position: relative;
+    width: 100%;
+    .topnav {
+      margin: 0 -20px 0 300px;
+      clear: both;
+      list-style: none;
+      text-align: right;
+      min-height: 35px;
     }
     li {
-      margin: 0;
-      padding: 0;
-      @include border-radius(0);
-      line-height: 21px;
+      display: inline-block;
+      line-height: 20px;
+      background: transparent;
+      border: none;
+      a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background:transparent;
+        border: none;
+        color: $nav-color;
+        padding: 0;
+        position: relative;
+        &:hover {
+          background: transparent;
+        }
+      }
+      & > a {
+        transition: all .15s ease;
+        padding: 8px 20px;
+        color: $nav-color;
+      }
+      &.active{
+        border-color: transparent;
+        & > a {
+          color: $nav-color-active;
+        }
+      }
       &:hover{
         & > a {
-          color: $sidebar-color;
+          color: rgba($nav-color,.75);
+        }
+      }
+      &.blurred {
+        & > a {
+          opacity: .33;
+        }
+      }
+      &:last-child {
+        padding-bottom: 15px;
+      }
+      &.drop {
+        transition: padding .3s ease;
+        &:hover {
+          padding-bottom: 72px;
+          a:after {
+            opacity: 1;
+          }
+          .sub {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+        &.no-animate {
+          -webkit-transition: none !important;
+          -moz-transition: none !important;
+          -o-transition: none !important;
+          transition: none !important;
+        }
+        & > a:after {
+          opacity: 0;
+          transition: opacity .3s ease;
+          font-family: "Lato", Helvetica, Arial, sans-serif;
+          content: "\25B2";
+          display: block;
+          color: $subnav-background;
+          transform: scale(2,1);
+          font-size: 20px;
+          position: absolute;
+          top: 32px;
+          left: 40%;
+          width: auto;
+        }
+        i {
+          transition: none;
+          font-size: 14px;
+          vertical-align: -3%;
+        }
+      }
+    }
+    .sub {
+      transition: all .3s ease;
+      opacity: 0;
+      position: absolute;
+      display: block;
+      left: 0;
+      visibility: hidden;
+      li {
+        a {
+          background: transparent;
+          &:hover {
+            background: transparent;
+          }
+        }
+      }
+    }
+  }
+
+  nav {
+    /* controls bg color of top when hovering on sub */
+    .sub {
+      top: 50px;
+      background-color: $subnav-background;
+      color: $subnav-color;
+      padding: 15px;
+      width: 100%;
+      text-align: center;
+      li {
+        width: auto;
+        border: none;
+        color: $theme-color-2;
+        font-size: 13px;
+        line-height: 18px;
+        border-color: transparent;
+        background: transparent;
+        margin-left: 15px;
+        padding: 0;
+        &.mobile-visible {
+          display: none;
+        }
+        &:hover {
+          a {
+            color: $subnav-color-hover;
+          }
+        }
+        &:active {
+          a {
+            color: $subnav-color-active;
+          }
+        }
+        a {
+          color: $subnav-color;
+        }
+      }
+      a {
+        background: none;
+        padding: 5px 20px;
+        color: $subnav-color;
+        &:hover {
+          text-decoration: none;
+          color: $subnav-color-hover;
+        }
+      }
+    }
+  }
+
+  // navigation shown if a page has more than one subpage
+
+  .subnav {
+    margin: 0 -20px 20px -20px;
+    padding: 0;
+    float: left;
+    clear: both;
+    font-family: $nav-font;
+    font-size: 13.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    & > li {
+      & > a {
+        color: mix($subnav-background, $shade-2, 70%);
+      }
+      &:hover {
+        & > a {
+          opacity: .8;
+          color: $subnav-background;
         }
       }
       &.active {
         & > a {
-          color: $sidebar-color;
+          color: $theme-color-1;
         }
       }
+    }
+    li {
+      position: relative;
       &.drop {
         &:hover {
-          padding-bottom: 0;
+          padding-bottom: 8px;
         }
         a:after {
           display: none;
         }
       }
-      a {
-        padding: .8em 1.5em;
-      }
     }
     .sub {
-      position: static;
-      width: 100%;
-      padding: 0;
       text-align: left;
+      left: 3px;
+      margin-top: 5px;
+      width: 200px;
+      padding: 7px 17px 14px 17px;
+      background: $sidebar-background;
       li {
-        margin-left: 0;
-        font-size: 13.5px;
-        line-height: 21px;
-        &.mobile-visible {
-          display: block;
+        display: block;
+        margin: 0;
+        padding: 0;
+        &:last-child {
+          border: none;
+        }
+        &:hover {
+          a {
+            color: lighten($sidebar-color,8);
+          }
         }
         a {
-          padding: .8em 1.5em;
           color: $sidebar-color;
+          padding: 10px 0 0 0;
+          &:hover {
+            opacity: .8;
+          }
         }
       }
     }
   }
 
-  .calendar-search-form {
-    .postcard-content {
-      .email-signup input {
-        &.text {
-          padding: 8px 13px;
+  .homepage {
+    .subnav {
+      & > li {
+        & > a {
+          color: $nav-color;
         }
-        &.submit-button {
-          padding:15px 0;
-          font-size: 20px
-        }
-      }
-    }
-  }
-
-  .menu-link {
-    display: block;
-    width: 68px;
-    margin-left: 0;
-    z-index: 5;
-  }
-
-  .header-login-container {
-    padding-top: 9px;
-    margin-bottom: 0;
-    position: static;
-    &:before, &:after {
-      content: "";
-      height: 9px;
-    }
-    .desktop-visible {
-      &.sidebar-trigger.tablet-visible {
-        display: block;
-        position:absolute;
-        top:26px;
-        right:0;
-        height: calc(100% - 9px);
-        width:68px;
-        i {
-          height: 60px;
-          display: block;
-          position: absolute;
-          margin: auto;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
+        &.active {
+          & > a {
+            color: $nav-color-active;
+          }
         }
       }
-      display: none;
     }
   }
 
-  .wrap {
-    &.active {
-      left: 16em;
-    }
-    &.sidebar-active {
-      @include filter(none);
-    }
-  }
-
-// javascript is used to wrap all iframes in a span called responsive-embed-wrapper to make them responsive.
-// once the iframe is wrapped in said span, it will be shown.
-
-  iframe[src *= 'youtube'] {
-    display: none;
-  }
-
-  .responsive-embed-wrapper iframe {
-    display: block;
-  }
-
-  .fb-like-box iframe {
-    display: block;
-  }
-
-  .header-container {
-    background: $shade-2;
-    .width-container {
+  .postcard {
+    margin: 0 -50px;
+    padding-left: calc(50% + 50px);
+    #events_map {
+      height: 100% !important;
       width: 100%;
+      position: absolute;
+    }
+  }
+
+  .postcard-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+    width: 50%;
+    height: 100%;
+  }
+
+  @media (min-width : 1025px) {
+  .postcard-image:after {
+    content: "\25C0";
+    position: absolute;
+    font-size: 24px;
+    text-align: right;
+    width: 18px;
+    height: 24px;
+    top: calc(50% - 12px);
+    right: 0;
+    color: $shade-3;
+    transform: scale(1,1.25);
+    }
+  }
+
+  .page-excerpt {
+    margin-left: -50px;
+    margin-right: -50px;
+  }
+
+  .progress-container {
+    margin: 50px -50px;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .homepage-excerpt, .page-excerpt {
+    padding: 50px 50px 50px 125px;
+    margin-bottom: 40px;
+    .excerpt-child {
+      background: $shade-2;
+      padding: 50px 50px 50px 0;
+      &:first-of-type {
+        margin-top: -50px;
+        .excerpt-postcard-image {
+          margin-top: 0;
+        }
+      }
+      &:last-child {
+        margin-bottom: -50px;
+        padding-bottom: 50px;
+      }
+      &.postcard {
+        position: relative;
+        margin-right: -50px;
+        margin-left: -125px;
+        padding-left: calc(50% + 140px);
+      }
+      &:not(.postcard) + .excerpt-child:not(.postcard) {
+        padding-top: 0;
+      }
+      &.even.postcard {
+        padding: 50px calc(50% + 140px) 50px 50px;
+        .excerpt-postcard-image {
+          left: auto;
+          right: 0;
+          &:after {
+            transform: rotate(180deg) scale(1,1.25);
+            left: 0;
+            right: auto;
+          }
+        }
+      }
+      div.share-container:last-child {
+        margin-bottom: -50px;
+      }
+    }
+    .has-goal {
+      width: 56%;
+    }
+    .progress-container {
+      margin: 0;
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+    .excerpt-postcard-image {
       margin: 0;
     }
   }
 
-  header {
-    position: relative;
-    max-width: none;
-    padding: 12px 0 12px 80px;
-    top: 0;
-    z-index: 1;
-  }
-
-  .splash {
-    header {
-      box-shadow: none;
-      background: transparent;
-      padding-left: 0;
-      top: 0;
-      text-align: center;
+  .homepage-excerpt {
+    &.basic {
+      border-left: 18px solid $widget-background;
+      padding-top: 50px;
+      padding-left: 50px;
     }
   }
 
-// replaces the subnav with breadcrumbs, as dropdowns don't work in touch devices
-
-  .tablet-visible {
-    display: block;
-  }
-
-  .desktop-visible {
-    .subnav-container {
-      display: none;
-    }
-  }
-
-  footer {
-    .row-fluid {
-      .span6, .span4 {
-        width: 40.05524861878453%;
+  .page-excerpt {
+    width: calc(100% + 100px);
+    padding: 30px 50px;
+    margin-bottom: 40px;
+    .excerpt-child {
+      padding: 30px 0;
+      &:first-of-type {
+        margin-top: -30px;
+      }
+      &:last-child {
+        margin-bottom: -30px;
+        padding-bottom: 30px;
+      }
+      &.postcard {
+        margin-left: -50px;
+        padding-right: 50px;
+        padding-left: calc(50% + 80px);
       }
     }
   }
 
-  @media only screen and (min-width : 801px) {
-
-    nav {
-      .drop:hover .sub {
-        display: block;
-      }
+  .excerpt-postcard-image {
+    @extend .postcard-image;
+    &:after {
+      color: $shade-2;
     }
-
   }
 
-  @media only screen and (max-width : 800px) {
-    .page-pages-show-donation-wide {
-      .row-fluid.staged-donation-container {
-        .span6.staged-donation-form {
-          width: 57.18232044198895%;
+  // follow page link shown in page stream
+
+  .page-follow {
+    float: right;
+    margin-top: -25px;
+  }
+
+  #stream {
+    margin-top: 45px;
+  }
+
+  .radio input[type="radio"], .checkbox input[type="checkbox"] {
+    margin-left: -22px;
+  }
+  .checkbox, .radio {
+    margin-left: 22px;
+  }
+
+  // inline radio buttons and check boxes
+
+  .radio-inline, .checkbox-inline {
+    span {
+      white-space: nowrap;
+      display: inline-block;
+      &:last-child {
+        label.radio, label.checkbox {
+          margin-right: 0;
         }
-        .span6.staged-donation-content {
-          width: 40.05524861878453%;
-        }
       }
-      .progress-indicator-stages li {
-        margin: 0 10px 12px 0;
-        font-size: .8em;
-        .stage-label {
-          min-width: 90px;
+    }
+    input[type="radio"], input[type="checkbox"] {
+      margin: 0;
+      display: inline-block;
+    }
+    input[type="radio"]:checked+label, input[type="checkbox"]:checked+label {
+      background-color: transparent;
+      color: $theme-color-1;
+    }
+    label {
+      display: block;
+    }
+    label.radio, label.checkbox {
+      .option_label {
+        display: inline;
+      }
+      position: relative;
+      top: 2px;
+      display: inline-block;
+      width: auto;
+      background-color: transparent;
+      font-family: $font;
+      color: $form-color;
+      font-size: 15px;
+      font-weight: normal;
+      text-transform: none;
+      text-align: left;
+      padding: 0;
+      margin: 0 10px 10px 3px;
+      min-width: 0;
+    }
+    label.checkbox {
+      position: relative;
+      padding: 0;
+      height: auto;
+      font-size: inherit;
+      margin: 0;
+    }
+   &.checkbox-inline {
+      vertical-align: top;
+      li {
+        width: auto;
+        label {
+          width: auto;
+        }
+        input[type="checkbox"] {
+          vertical-align: middle;
         }
       }
     }
   }
 
-}
+  // inline radio buttons
 
-// Desktop above 1140px styles
+  .radio.inline, .checkbox.inline, .inline label.radio {
+    display: inline-block;
+    margin-right: 20px;
+    padding-top: 5px;
+    margin-bottom: 10px;
+    vertical-align: middle;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
 
-@media only screen and (min-width: 1300px) {
-  // maximum side width container
+  input[type="checkbox"],
+  input[type="radio"] {
+    border: 0;
+    padding: 0;
+    background: none;
+    box-shadow: 0;
+  }
 
-  .width-container {
-    width: 1170px; /* 1300px - 10% for margins */
-    margin: 0 auto;
+  // wraps credit card icons
+
+  .cc {
+    padding-bottom: 10px;
   }
 
   // paid membership options
@@ -1456,22 +824,13 @@ ul#page-stream {
     list-style: none;
     margin: 0;
     padding: 0;
+    vertical-align: top;
     li.membership {
-      position: relative;
-      float: left;
-      text-align: center;
-      list-style: none;
-      background-color: $shade-1;
-      padding: 20px;
+      vertical-align: top;
       display: inline-block;
-      margin: 0 15px 20px 0;
-      width: 23.983739837398%; // 236px ÷ 984px
+      margin: 0 1.22% 1.22% 0;
+      width: 31.8%;
       height: 250px;
-      .membership-blurb {
-        padding: 15px 0;
-        font-size: 13px;
-        line-height: 16px;
-      }
       .buy {
         position: absolute;
         width: 88px;
@@ -1479,11 +838,652 @@ ul#page-stream {
         margin-left: -44px;
         left: 50%;
       }
-      .badge {
-        font-size: 12px;
-        text-transform: uppercase;
+    }
+  }
+
+  // featured content slider
+
+  .page-features {
+    .features-headline {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 33px;
+      padding: 24px;
+      background: $widget-2-background;
+      color: $widget-2-color;
+      p {
+        margin: 0 0 1em 0;
+        width: 225px;
+      }
+      h4 {
+        color: $widget-2-color;
+        margin-bottom: .5em;
+        width: 225px;
+      }
+    }
+    .features-control-nav {
+      padding: 0;
+      text-align: center;
+      li {
+        font-size: 32px;
+        line-height: 1;
+        display: inline-block;
+        cursor: pointer;
+        margin: 0 5px;
+        &.active {
+          opacity: .5;
+        }
       }
     }
   }
 
-}
+  // participate box
+  .participate {
+    display: table;
+    @if ($button-radius == 0px) {
+      padding: 0;
+    } @else {
+      padding: 15px;
+    }
+    .participate-button-wrap, .participate-form-wrap {
+      display: table-cell;
+      vertical-align: middle;
+    }
+    .participate-button-wrap {
+      width: 33%;
+      & + .participate-form-wrap {
+        margin-top: 0;
+      }
+    }
+    .participate-form-wrap {
+      width: 67%;
+      padding: 40px 8.5% 50px 8.5%;
+    }
+  }
+
+  .byline {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 174px;
+    margin: 0;
+    & ~ * {
+      padding-right: 154px;
+      .page-follow {
+        visibility: hidden;
+      }
+    }
+    li {
+      i + span {
+        display: inline-block;
+        vertical-align: middle;
+        word-wrap: break-word;
+        max-width: 100px;
+      }
+    }
+  }
+
+  // inline sign in form
+
+  .user-session-form-container {
+    .oauth-links {
+     margin-bottom: 0;
+    }
+    .email-sign-in {
+      margin-top: 0;
+      width: auto;
+      text-align: left;
+    }
+    .or-create-account, .email-sign-in {
+      text-align: left;
+      padding-left: 7px;
+      width: auto;
+      margin-top: 5px;
+    }
+    .post-comment, .submit-button.post-comment {
+      width: auto;
+    }
+  }
+
+  .signin-with-facebook, .signin-with-twitter {
+    display: inline-block;
+    margin-bottom: 30px;
+    width: 200px;
+  }
+
+  .review-rules {
+    float: right;
+    padding: 0;
+  }
+
+  // page specific tweaks
+
+  .supporter-pic-right {
+    padding-left: 10px;
+  }
+
+  .calendar-search-form {
+    .postcard-content {
+      h3 {
+        font-size: 24px;
+      }
+      .email-signup input {
+        font-size: 25px;
+        &.text {
+          padding: 13px 18px;
+        }
+        &.submit-button {
+          padding: 17px 0;
+        }
+      }
+      .radio-inline {
+        span:nth-child(2n) {
+          label.radio {
+            margin-right:10px;
+          }
+        }
+        label.radio {
+          width: auto;
+          margin-right: 10px;
+          float: none;
+          display: inline-block;
+        }
+      }
+      .host-own a {
+        display: inline-block;
+        margin-top: 0;
+      }
+    }
+  }
+
+  #event_rsvp_guests_count, input.quantity, #signup_donations_to_raise_amount {
+    width: 25%;
+  }
+
+  .event-wrap {
+    li.span6 {
+        &:nth-child(2n+1) {
+        margin-left: 0;
+        clear: both;
+      }
+    }
+  }
+
+  .faq {
+    .page-excerpt {
+      padding-left: 50px;
+      padding-right: 0;
+    }
+  }
+
+  .page-type-question, .page-type-faq {
+    .question {
+      padding-left: 40px;
+      height: 72px;
+      &:before {
+        font-size: 48px;
+        width: 72px;
+        line-height: 72px;
+      }
+      & ~ #content {
+        .intro {
+          padding-left: 40px;
+        }
+        .answer-wrap {
+          padding-left: 40px;
+        }
+      }
+      & + .excerpt {
+        padding-left: 40px;
+      }
+    }
+    .answer-wrap {
+      &:before {
+        content: "A";
+        font-size: 48px;
+        width: 72px;
+        line-height: 72px;
+      }
+    }
+  }
+
+  .vote-pledge-form {
+    .row-fluid .span4 {
+      margin-top: 0;
+    }
+  }
+
+  .suggestion-tag-list {
+    li {
+      margin: 1em 1em 10px 0;
+    }
+  }
+
+  .people-list {
+    width: 100%;
+    margin: 0 0 10px 0;
+    .people-name {
+      max-width: none;
+    }
+  }
+
+  .page-pages-show-donation-wide {
+    .radio-inline {
+      span {
+        float: left;
+        margin: 2.5% 5% 2.5% 0;
+        min-width: 30%;
+        &:nth-child(2n) {
+          margin-right: 5%;
+        }
+        &:nth-child(3n) {
+          margin-right: 0;
+        }
+      }
+    }
+    #donation_amount_other {
+      margin: 22px 0 0 0;
+    }
+    .stage-1 { position:relative;
+      .progress-stage-button {
+        margin-top: -52px;
+      }
+    }
+    .progress-indicator-stages {
+      li {
+        .stage-label {
+          min-width: 100px;
+        }
+      }
+    }
+    .donation_form .form-wrap {
+      margin-right: 20px;
+    }
+    .staged-donation-content {
+      position: relative;
+      .progress-container {
+        margin: -50px -50px 50px 0;
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+    }
+    input#donation_amount_other {
+      width: 30%;
+      position:absolute;
+      bottom:0;
+      left:100px;
+    }
+    label[for="donation_amount_other"] {
+      clear:both;
+    }
+  }
+
+  .distance {
+    .within {
+      position: relative;
+      top: 2px;
+      display: inline;
+      padding-right: 5px;
+    }
+  }
+
+  .page-user-sessions-new-wide {
+    h2 {
+      font-size: 31.5px;
+      line-height: 35px;
+    }
+  }
+
+  // styling for when background image is enabled
+
+  .has-background-image {
+    .main.width-container {
+      &.homepage {
+        background: transparent;
+        .homepage-excerpt, .page-excerpt {
+          background: rgba($shade-2,.8);
+        }
+      }
+      .excerpt-child {
+        background: transparent;
+      }
+    }
+    .participate {
+      background: rgba($shade-1,.8);
+    }
+  }
+
+  // inline formatting for name, activity type and date in page stream for tablet and desktop view
+
+  ul#page-stream {
+    li.activity  {
+      span + a {
+      display: inline;
+      }
+    }
+    .activity-time {
+      display: inline;
+    }
+    .timeago {
+      display: inline;
+      padding-right: 0;
+      float: none;
+      color: inherit;
+    }
+    .activity_links a {
+      display: inline;
+    }
+    .activity_content {
+      clear: none;
+    }
+  }
+
+  .activities {
+    li {
+      .activity {
+        margin-left: 64px;
+        padding: 20px 25px;
+      }
+    }
+  }
+
+  #unsubscribe_email, #feedback_content {
+    max-width: 600px;
+  }
+
+  // Tablet only
+  @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+
+    .radio input[type="radio"], .checkbox input[type="checkbox"] {
+      margin-left: -29px;
+    }
+
+    .checkbox, .radio {
+      margin-left: 29px;
+    }
+
+    .site-logo {
+      margin: 15px 85px;
+      width: auto;
+      position: relative;
+      top: 0;
+      height:auto;
+      header, header.splash {
+        float: none;
+        position: relative;
+        a {
+          position: relative;
+        }
+      }
+    }
+
+    .title {
+      a {
+        @if (lightness($shade-2) * .79 < lightness($text-color) and lightness($text-color) < lightness($shade-2) * 1.19 ) {
+          color: $theme-color-2;
+        } @else {
+          color: $text-color;
+        }
+      }
+    }
+
+  // off canvas nav to be used on tablets, since drop downs don't work on touch devices
+
+    nav {
+      @include mobile-nav;
+      float: none;
+      margin: 0;
+      .topnav {
+        margin: 0;
+        padding: 0;
+        text-align: left;
+      }
+      li {
+        margin: 0;
+        padding: 0;
+        @include border-radius(0);
+        line-height: 21px;
+        &:hover{
+          & > a {
+            color: $sidebar-color;
+          }
+        }
+        &.active {
+          & > a {
+            color: $sidebar-color;
+          }
+        }
+        &.drop {
+          &:hover {
+            padding-bottom: 0;
+          }
+          a:after {
+            display: none;
+          }
+        }
+        a {
+          padding: .8em 1.5em;
+        }
+      }
+      .sub {
+        position: static;
+        width: 100%;
+        padding: 0;
+        text-align: left;
+        li {
+          margin-left: 0;
+          font-size: 13.5px;
+          line-height: 21px;
+          &.mobile-visible {
+            display: block;
+          }
+          a {
+            padding: .8em 1.5em;
+            color: $sidebar-color;
+          }
+        }
+      }
+    }
+
+    .calendar-search-form {
+      .postcard-content {
+        .email-signup input {
+          &.text {
+            padding: 8px 13px;
+          }
+          &.submit-button {
+            padding:15px 0;
+            font-size: 20px
+          }
+        }
+      }
+    }
+
+    .menu-link {
+      display: block;
+      width: 68px;
+      margin-left: 0;
+      z-index: 5;
+    }
+
+    .header-login-container {
+      padding-top: 9px;
+      margin-bottom: 0;
+      position: static;
+      &:before, &:after {
+        content: "";
+        height: 9px;
+      }
+      .desktop-visible {
+        &.sidebar-trigger.tablet-visible {
+          display: block;
+          position:absolute;
+          top:26px;
+          right:0;
+          height: calc(100% - 9px);
+          width:68px;
+          i {
+            height: 60px;
+            display: block;
+            position: absolute;
+            margin: auto;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+          }
+        }
+        display: none;
+      }
+    }
+
+    .wrap {
+      &.active {
+        left: 16em;
+      }
+      &.sidebar-active {
+        @include filter(none);
+      }
+    }
+
+  // javascript is used to wrap all iframes in a span called responsive-embed-wrapper to make them responsive.
+  // once the iframe is wrapped in said span, it will be shown.
+
+    iframe[src *= 'youtube'] {
+      display: none;
+    }
+
+    .responsive-embed-wrapper iframe {
+      display: block;
+    }
+
+    .fb-like-box iframe {
+      display: block;
+    }
+
+    .header-container {
+      background: $shade-2;
+      .width-container {
+        width: 100%;
+        margin: 0;
+      }
+    }
+
+    header {
+      position: relative;
+      max-width: none;
+      padding: 12px 0 12px 80px;
+      top: 0;
+      z-index: 1;
+    }
+
+    .splash {
+      header {
+        box-shadow: none;
+        background: transparent;
+        padding-left: 0;
+        top: 0;
+        text-align: center;
+      }
+    }
+
+  // replaces the subnav with breadcrumbs, as dropdowns don't work in touch devices
+
+    .tablet-visible {
+      display: block;
+    }
+
+    .desktop-visible {
+      .subnav-container {
+        display: none;
+      }
+    }
+
+    footer {
+      .row-fluid {
+        .span6, .span4 {
+          width: 40.05524861878453%;
+        }
+      }
+    }
+
+    @media only screen and (min-width : 801px) {
+
+      nav {
+        .drop:hover .sub {
+          display: block;
+        }
+      }
+
+    }
+
+    @media only screen and (max-width : 800px) {
+      .page-pages-show-donation-wide {
+        .row-fluid.staged-donation-container {
+          .span6.staged-donation-form {
+            width: 57.18232044198895%;
+          }
+          .span6.staged-donation-content {
+            width: 40.05524861878453%;
+          }
+        }
+        .progress-indicator-stages li {
+          margin: 0 10px 12px 0;
+          font-size: .8em;
+          .stage-label {
+            min-width: 90px;
+          }
+        }
+      }
+    }
+
+  }
+
+  // Desktop above 1140px styles
+
+  @media only screen and (min-width: 1300px) {
+    // maximum side width container
+
+    .width-container {
+      width: 1170px; /* 1300px - 10% for margins */
+      margin: 0 auto;
+    }
+
+    // paid membership options
+
+    ul.membership-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      li.membership {
+        position: relative;
+        float: left;
+        text-align: center;
+        list-style: none;
+        background-color: $shade-1;
+        padding: 20px;
+        display: inline-block;
+        margin: 0 15px 20px 0;
+        width: 23.983739837398%; // 236px ÷ 984px
+        height: 250px;
+        .membership-blurb {
+          padding: 15px 0;
+          font-size: 13px;
+          line-height: 16px;
+        }
+        .buy {
+          position: absolute;
+          width: 88px;
+          bottom: 15px;
+          margin-left: -44px;
+          left: 50%;
+        }
+        .badge {
+          font-size: 12px;
+          text-transform: uppercase;
+        }
+      }
+    }
+
+  }
