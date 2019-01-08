@@ -845,9 +845,9 @@
 
   .page-features {
     .features-headline {
-      display: block;
+      display: hidden;
       position: absolute;
-      top: 0;
+      bottom: 0;
       left: 33px;
       padding: 24px;
       background: $widget-2-background;
