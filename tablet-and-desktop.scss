@@ -1109,10 +1109,9 @@
       }
     }
     input#donation_amount_other {
-      width: 30%;
-      position:absolute;
+      width: 100%;
+      position:relative;
       bottom:0;
-      left:100px;
     }
     label[for="donation_amount_other"] {
       clear:both;
